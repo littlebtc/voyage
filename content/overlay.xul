@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://voyage/locale/voyage.dtd">
+<overlay id="voyageOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://voyage/content/overlay.js"></script>
+  <menupopup id="goPopup">
+    <menuitem id="showVoyage" label="&voyage.label;" accesskey="&voyage.accesskey;"
+              oncommand="openUILink('about:voyage', event);"  onclick="checkForMiddleClick(this, event);" insertafter="menu_showAllHistory"
+/>
+  </menupopup>
+ 
+</overlay>

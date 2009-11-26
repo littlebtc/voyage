@@ -1,0 +1,6 @@
+content	voyage		jar:chrome/voyage.jar!/content/
+locale	voyage		en-US	jar:chrome/voyage.jar!/locale/en-US/
+locale	voyage		zh-TW	jar:chrome/voyage.jar!/locale/zh-TW/
+skin	voyage		classic/1.0	jar:chrome/voyage.jar!/skin/
+overlay	chrome://browser/content/browser.xul	chrome://voyage/content/overlay.xul
+resource voyage modules/

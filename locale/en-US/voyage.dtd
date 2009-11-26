@@ -1,0 +1,19 @@
+<!ENTITY voyage.label "Voyage">
+<!ENTITY voyage.accesskey "V">
+<!ENTITY voyage.title "Voyage">
+<!ENTITY voyage.privateBrowsingError.title "Private Browsing in On">
+<!ENTITY voyage.privateBrowsingError.description "Stop the private browsing mode to use Voyage.">
+<!ENTITY voyage.sanitize.label "Clear Recent History">
+<!ENTITY voyage.options.label "Options">
+<!ENTITY voyage.loading.label "Loading…">
+<!ENTITY voyage.detailPopup.title.label "Visit Details">
+<!ENTITY voyage.detailPopup.relationship.from.label "From:">
+<!ENTITY voyage.detailPopup.relationship.to.label "To:">
+<!ENTITY voyage.detailPopup.mediaList.title "Medias included in this Bubble">
+<!ENTITY voyage.detailPopup.list.title "Page visits included in this Bubble">
+<!ENTITY voyage.detailPopup.list.table.title.label "Title">
+<!ENTITY voyage.detailPopup.list.table.time.label "Time">
+<!ENTITY voyage.firstRun.title "Welcome to Voyage!">
+<!ENTITY voyage.firstRun.intro1 "Voyage is an add-on which makes it easier to remind one's web browsing history.">
+<!ENTITY voyage.firstRun.intro2 "Voyage would arrange your browsing history on timeline to site-dependent and time-specific &quot;Bubbles&quot;; and it would also display the thumbnails of the media in the &quot;Media Wall&quot;, for several  known media page which you had visited after this add-on was enabled. You can also enable the Twitter integration to display your tweets on Voyage's timeline.">
+<!ENTITY voyage.firstRun.intro3 "If you want to visit the Voyage in the future, select History &gt; Voyage. Bon Voyage!">

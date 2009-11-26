@@ -1,0 +1,20 @@
+<!ENTITY voyage.label "Voyage">
+<!ENTITY voyage.accesskey "V">
+<!ENTITY voyage.title "Voyage">
+<!ENTITY voyage.privateBrowsingError.title "私密瀏覽模式啟用中">
+<!ENTITY voyage.privateBrowsingError.description "欲使用 Voyage，請停止私密瀏覽模式。">
+<!ENTITY voyage.sanitize.label "清除最近的歷史紀錄">
+<!ENTITY voyage.options.label "選項">
+<!ENTITY voyage.loading.label "載入中">
+<!ENTITY voyage.detailPopup.title.label "頁面檢視詳情">
+<!ENTITY voyage.detailPopup.relationship.from.label "來自以下氣泡:">
+<!ENTITY voyage.detailPopup.relationship.to.label "移至以下氣泡:">
+<!ENTITY voyage.detailPopup.mediaList.title "此氣泡包含的媒體清單">
+<!ENTITY voyage.detailPopup.list.title "此氣泡包含的已檢視頁面清單">
+<!ENTITY voyage.detailPopup.list.table.title.label "標題">
+<!ENTITY voyage.detailPopup.list.table.time.label "時間">
+<!ENTITY voyage.firstRun.title "歡迎來到 Voyage!">
+<!ENTITY voyage.firstRun.intro1 "Voyage 是一個讓您回味過去網路瀏覽經歷的附加元件。">
+<!ENTITY voyage.firstRun.intro2 "Voyage 是以「氣泡」 的方式，將您的瀏覽紀錄依網站區分，排列在時間軸上；Voyage 並會辨識您在啟用此元件後曾經瀏覽過的部分媒體頁面，將其縮圖顯示在下方的「媒體牆」。您也可以啟用 Twitter 整合來將您過去的 Tweet 顯示在時間軸上。">
+<!ENTITY voyage.firstRun.intro3 "未來您可以選擇歷史 &gt; Voyage 以再次進入此頁面。一路順風！">
+

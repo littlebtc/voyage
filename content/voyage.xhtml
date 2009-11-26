@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://voyage/skin/voyage.css"?>
+<?xml-stylesheet href="chrome://voyage/skin/jquery-ui-1.7.2.custom.css"?>
+<!DOCTYPE html [
+<!ENTITY % htmlDTD PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+%htmlDTD;
+<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+%brandDTD;
+<!ENTITY % aboutDTD SYSTEM "chrome://global/locale/about.dtd" >
+%aboutDTD;
+<!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd">
+%globalDTD;
+<!ENTITY % voyageDTD SYSTEM "chrome://voyage/locale/voyage.dtd">
+%voyageDTD;
+]>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+>
+  <head>
+    <script type="application/javascript" src="chrome://voyage/content/oauth.js"></script>
+    <script type="application/javascript" src="chrome://voyage/content/jquery-1.3.2.min.js"></script>
+    <script type="application/javascript" src="chrome://voyage/content/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="application/javascript" src="chrome://voyage/content/voyage.js"></script>
+    <title>Voyage</title>
+  </head>
+  <body>
+    <!-- If in the private browsing mode... -->
+    <div id="privateBrowsingError">
+      <h1>&voyage.privateBrowsingError.title;</h1>
+      &voyage.privateBrowsingError.description;
+    </div>
+    <!-- Else... -->
+    <!-- Container for voyage interface -->
+    <div id="container">
+      <!-- Toolbar -->
+      <div id="datePicker"></div>
+      <div id="tools">
+        <h1>&voyage.title;</h1>
+        <span id="twitterBlock"><img id="twitterUserAvatar" src="chrome://voyage/skin/bird.png" /><span id="twitterUserData"></span></span>
+        <ul>
+          <li id="shownDays"><a href="about:voyage"><img src="chrome://voyage/skin/calendar.png" /><span></span></a></li>
+          <li><a href="about:voyage#sanitize" onclick="voyage.openSanitizeDialog(); event.preventDefault();"><img src="chrome://voyage/skin/clock.png" />&voyage.sanitize.label;</a></li>
+          <!--<li><a href="about:voyage#options">&voyage.options.label;</a></li>-->
+        </ul>
+      </div>
+      <!-- Main timeline -->
+      <canvas id="bubbleLinker"></canvas>
+      <div id="timeline">
+      </div>
+      <!-- Media Wall -->
+      <div id="mediaWallContainer">
+        <div id="mediaWall"> 
+        </div>
+        <div id="mediaWallSliderContainer">
+        </div>
+      </div>
+      <div id="loading">&voyage.loading.label;
+      </div>
+    </div>
+    <!-- Popups -->
+    <div id="firstRun" title="&voyage.firstRun.title;">
+      <p>&voyage.firstRun.intro1;</p>
+      <p>&voyage.firstRun.intro2;</p>
+      <p>&voyage.firstRun.intro3;</p>
+    </div>
+    <div id="twitterAuth">
+      <div></div>
+    </div>
+    <div id="detailPopup" title="&voyage.detailPopup.title.label;">
+      <div id="detailPopupInfo">
+      </div>
+      <div id="detailPopupNavigation">
+        <div id="detailPopupFromBubble">
+          <h3>&voyage.detailPopup.relationship.from.label;</h3>
+          <ul></ul>
+        </div>
+        <div id="detailPopupToBubble">
+          <h3>&voyage.detailPopup.relationship.to.label;</h3>
+          <ul></ul>
+        </div>
+      </div>
+      <div id="detailPopupMediaList">
+        <h3>&voyage.detailPopup.mediaList.title;</h3>
+        <div></div>
+      </div>
+      <div id="detailPopupList">
+        <h3>&voyage.detailPopup.list.title;</h3>
+        <table id="detailPopupTable">
+          <thead>
+          <tr><th>&voyage.detailPopup.list.table.title.label;</th><th id="detailTableHeadTime">&voyage.detailPopup.list.table.time.label;</th></tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

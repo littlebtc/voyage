@@ -1,0 +1,351 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#privateBrowsingError {
+  display: none; /* Hidden by default */
+}
+
+/* Fix jQuery UI display bug */
+body > input[type='text'][size='1'] {
+  display: none;
+}
+
+#tools {
+  background: #D1DBBD;
+  color: #193441;
+  height: 50px;
+  line-height: 25px;
+}
+
+#tools h1 {
+  display: inline-block;
+  margin: 0;
+  padding: 0.2em;
+  margin-top: 4px;
+}
+
+#tools ul {
+  position: absolute;
+  top: 0;
+  right: 0;
+  float: right;
+  list-style-type: none;
+  line-height: normal;
+}
+
+#tools li {
+  display: inline;
+}
+
+#tools a {
+  color: #3E606F;
+  text-decoration: none;
+  padding: 3px 0;
+}
+#tools a:hover {
+  background: #FFFFFF;
+}
+
+#tools img {
+  vertical-align: middle;
+  margin-right: 5px;
+  border: 0;
+}
+
+#twitterBlock {
+  display: inline-block;
+}
+
+#twitterUserAvatar {
+  width: 32px;
+}
+
+#twitterUserData a {
+  font-size: 80%;
+}
+#timeline {
+  position: absolute;
+  white-space: nowrap;
+  overflow-x: scroll;
+  margin: 0; padding: 0;
+  top: 50px;
+  bottom: 120px;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+}
+
+#bubbleLinker {
+  background: url(chrome://voyage/skin/background.png) repeat-x;
+  position: absolute;
+  top: 50px;
+  left: 0;
+}
+.timelineBlock {
+  display: inline-block;
+  vertical-align: top;
+  line-height: normal;
+  position: relative;
+  margin: 0; padding: 0;
+  height: 100%;
+  border-right: 1px solid #D1DBBD;
+}
+
+.timelineBlock span {
+  background: #FCFFF5;
+  font-size: 85%;
+  opacity: 0.7;
+}
+.bubble {
+  position: absolute;
+  white-space: normal;
+  width: 15em;
+  background: #D1DBBD;
+  border: 2px solid #D1DBBD;
+  font-size: 95%;
+}
+
+/* Some favicon is not 16*16 */
+.favicon {
+  width: 16px;
+  height: 16px;
+  border : 0;
+  vertical-align: middle;
+}
+
+.timelineElement {
+}
+
+.bubble-selected {
+  background: #FFFFFF;
+  color: white;
+}
+
+.bubble-related-from {
+  background: #FCFFF5;
+  border: 2px solid #D1DBBD;
+}
+.bubble-related-to {
+  background: #FCFFF5;
+  border: 2px solid #D1DBBD;
+}
+
+.spotlighted .bubble {
+  opacity: 0.5;
+}
+.spotlighted .tweet {
+  opacity: 0.25;
+}
+
+.spotlighted .bubble-selected,
+.spotlighted .bubble-related-from,
+.spotlighted .bubble-related-to {
+  opacity: 1 !important;
+}
+
+#bubbleTip {
+  width: 300px;
+  font-size: 75%;
+  border: 1px solid #999999;
+  padding: 5px;
+  -moz-border-radius: 5px;
+  z-index: 3;
+  background: white;
+  opacity: 0.7;
+}
+#bubbleTip p {
+  margin: 0.3em 0;
+}
+#bubbleTip h3 {
+  margin: 0;
+}
+
+#bubbleTip ul {
+  margin: 0;
+  padding: 0 0 0.3em 0;
+  list-style-type: none;
+}
+#bubbleTip li a {
+  padding: 0.3em 0;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+
+
+#twitterAuth, #firstRun {
+  font-size: 75%;
+}
+
+
+#mediaWallContainer {
+  position: absolute;
+  background: #FCFFF5;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  padding: 8px 5px 0px 5px;
+  border: 2px solid #193441;
+  -moz-border-radius: 10px;
+}
+
+#mediaWall {
+  overflow: hidden;
+  white-space: nowrap;
+  height: 80px;
+  line-height: 0;
+}
+#mediaWall div {
+  vertical-align: top:
+  text-decoration: underline;
+}
+
+/* "Not found" message */
+#mediaWall p {
+  font-weight: bold;
+  font-size: 120%;
+  color: #193441;
+}
+
+.mediaWallItem {
+  display: inline-block; 
+  background-position: center center;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #91AA9D;
+  margin: 1px;
+}
+
+.spotlighted .mediaWallItem {
+  opacity: 0.4;
+}
+
+.spotlighted .mediaWallItem-selected {
+  border: 2px solid #193441;
+  margin: 0;
+  opacity: 1.0 !important;
+}
+
+#mediaWallSliderContainer {
+  margin: 0 11px;
+  height: 25px;
+}
+
+#detailPopup {
+  font-size: 75%;
+}
+
+#detailPopupNavigation {
+  float: right;
+  width: 300px;
+}
+
+#detailPopup {
+  display: none;
+}
+
+#detailPopup ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.littleBubbleIcon {
+  width: 16px;
+  height: 16px;
+  margin: 3px 0;
+  padding: 4px;
+  border: 2px solid #CCCCCC;
+  background-color: #EEEEEE;
+  -moz-border-radius: 14px;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+#detailPopupInfo strong {
+  font-size: 120%;
+  padding-left: 0.3em;
+}
+
+#detailPopupList {
+  margin-right: 330px;
+  padding-right: 15px;
+}
+
+#detailPopupTable {
+  width: 100%;
+}
+#detailPopupTable th {
+  background: #EEEEEE;
+}
+#detailTableHeadTime {
+  width: 7em;
+}
+
+#detailPopupTable a {
+  display: block;
+  padding: 0.3em 0;
+  text-decoration: none;
+}
+#detailPopupTable a:hover {
+  background: #DDDDDD;
+}
+#detailPopupTable tr {
+  height: 1.5em;
+}
+#detailPopupTable a {
+  word-wrap: break-word;
+}
+
+#detailPopupNavigation a {
+  display: block;
+  text-decoration: none;
+  padding: 0.3em;
+  border: 1px solid transparent;
+}
+#detailPopupNavigation a:hover {
+  border: 1px solid #CCCCCC;
+}
+
+.link-untitled {
+  font-style: italic;
+}
+
+.tweet {
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: normal;
+  width: 120px;
+  height: 50px;
+  padding: 5px;
+  font-size: 80%;
+  background: #D1DBBD;
+  color: #193441;
+  border: 1px solid #3E606F;
+  -moz-border-radius: 10px;
+  opacity: 0.6;
+}
+
+.tweet:hover {
+  overflow: visible;
+  width: auto;
+  height: auto;
+  max-width: 240px;
+  min-height: 50px;
+  z-index: 3;
+  opacity: 0.9;
+}
+
+#loading {
+  position: absolute;
+  top: 50px; right: 0;
+  z-index: 5;
+  padding: 1em;
+  text-align: center;
+  background: #193441;
+  color: white;
+  font-size: 100%;
+}

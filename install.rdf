@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>voyage@littleb.tc</em:id>
+    <em:name>Voyage</em:name>
+    <em:version>0.5</em:version>
+    <em:description>Rediscover your browsing history.</em:description>
+    <em:creator>Littlebtc</em:creator>
+    <em:contributor>tdk4 (for logo)</em:contributor>
+    <em:contributor>BobChao (for ideas, background and mockups)</em:contributor>
+    <em:contributor>irvinfly (for testing, mainly on MacOS X)</em:contributor>
+    <em:homepageURL>http://littleb.tc/voyage</em:homepageURL>
+    <em:iconURL>chrome://voyage/skin/logo.png</em:iconURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- Firefox / Iceweasel ... -->
+        <em:minVersion>3.5</em:minVersion>
+        <em:maxVersion>3.7a1pre</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:localized>
+      <Description>
+        <em:locale>zh-TW</em:locale>
+        <em:name>Voyage</em:name>
+        <em:description>重新探索您的歷史瀏覽紀錄。 </em:description>
+        <em:creator>Littlebtc</em:creator>
+        <em:contributor>tdk4 (Logo 製作)</em:contributor>
+        <em:contributor>BobChao (點子提供、背景圖案和 Mockup 製作)</em:contributor>
+        <em:contributor>irvinfly (測試，主要是在 MacOS X)</em:contributor>
+        <em:homepageURL>http://littleb.tc/voyage</em:homepageURL>
+      </Description>
+     </em:localized>
+  </Description>
+</RDF>
