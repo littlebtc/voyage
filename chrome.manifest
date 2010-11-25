@@ -5,3 +5,7 @@ locale	voyage		zh-HK	locale/zh-TW/
 skin	voyage		classic/1.0	skin/
 overlay	chrome://browser/content/browser.xul	chrome://voyage/content/overlay.xul
 resource voyage modules/
+
+# Gecko 2.0 Compartibility
+component {fe258f80-9a4c-11de-8a39-0800200c9a66} components/about_voyage.js
+contract @mozilla.org/network/protocol/about;1?what=voyage {fe258f80-9a4c-11de-8a39-0800200c9a66}

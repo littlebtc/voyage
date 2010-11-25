@@ -4,7 +4,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>voyage@littleb.tc</em:id>
     <em:name>Voyage</em:name>
-    <em:version>0.5</em:version>
+    <em:version>0.5.5</em:version>
     <em:description>Rediscover your browsing history.</em:description>
     <em:creator>Littlebtc</em:creator>
     <em:contributor>tdk4 (for logo)</em:contributor>
@@ -16,7 +16,7 @@
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- Firefox / Iceweasel ... -->
         <em:minVersion>3.5</em:minVersion>
-        <em:maxVersion>3.7a1pre</em:maxVersion>
+        <em:maxVersion>4.0b8pre</em:maxVersion>
       </Description>
     </em:targetApplication>
     <em:localized>

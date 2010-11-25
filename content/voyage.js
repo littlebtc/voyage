@@ -1290,6 +1290,7 @@ voyage.timeline = {
         bubbleBlock.style.textAlign = 'center';
         /* Border width concerned */
         bubbleBlock.style.MozBorderRadius = bubbleRadius + 2 + 'px';
+        bubbleBlock.style.borderRadius = bubbleRadius + 2 + 'px';
       
         if (!$('#timelineBlock-' + refTime).get(0)) {
           /* This should not happend */ 

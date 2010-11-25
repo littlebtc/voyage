@@ -25,6 +25,8 @@ AboutVoyage.prototype = {
   }
 };
 
-function NSGetModule(compMgr, fileSpec)
-  XPCOMUtils.generateModule([AboutVoyage]);
-
+if (XPCOMUtils.generateNSGetFactory) {
+  var NSGetFactory = XPCOMUtils.generateNSGetFactory([AboutVoyage]);
+} else {
+  var NSGetModule = XPCOMUtils.generateNSGetModule([AboutVoyage]);
+}
