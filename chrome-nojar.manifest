@@ -1,7 +1,0 @@
-content	voyage		content/
-locale	voyage		en-US	locale/en-US/
-locale	voyage		zh-TW	locale/zh-TW/
-locale	voyage		zh-HK	locale/zh-TW/
-skin	voyage		classic/1.0	skin/
-overlay	chrome://browser/content/browser.xul	chrome://voyage/content/overlay.xul
-resource voyage modules/
