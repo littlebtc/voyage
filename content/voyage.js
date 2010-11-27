@@ -19,6 +19,7 @@ var voyage = {
   onLoad: function() {
     Components.utils.import("resource://voyage/XPCOMUtilsExtra.jsm");
     Components.utils.import('resource://voyage/HistoryReader.jsm');
+    this._reader = new historyReader();
     XPCOMUtilsExtra.defineLazyGetter(this, "_prefBranch", function() {
       return Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.voyage.");
     });
@@ -94,7 +95,6 @@ var voyage = {
     this._bubbles = [];
     this._hosts = {};
     this._medias = [];
-    this._reader = new historyReader();
     this._reader.fetch(beginTime, endTime, keyword, this);
   },
   /* After reader fetch the history records asynchrously, read the result and collect the bubble */
@@ -1137,7 +1137,9 @@ voyage.timeline = {
   init: function() {
     XPCOMUtilsExtra.defineLazyServiceGetter(this, "_dateService", "@mozilla.org/intl/scriptabledateformat;1", "nsIScriptableDateFormat");
     XPCOMUtilsExtra.defineLazyGetter(this, "_expireDays", function() {
-      return Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("browser.").getIntPref('history_expire_days_min');
+      /* Ask when is the oldest histroy visit. Bad workaround to Firefox 4 expiration. */
+      return voyage._reader.getHistoryDuration();
+      //Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("browser.").getIntPref('history_expire_days_min');
     });
     this.readTimeline(new Date(voyage._appStartAt.getTime()).setHours(24, 0, 0, 0));
   },

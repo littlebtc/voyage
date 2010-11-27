@@ -108,5 +108,13 @@ historyReader.prototype = {
     callback._callback = aCallback;
     stmt.executeAsync(callback);
   },
-
+  getHistoryDuration: function() {
+    /* XXX: This works synchronously. :( */
+    var stmt = this._dbConn.createStatement("SELECT visit_date FROM moz_historyvisits ORDER BY visit_date ASC LIMIT 1");
+    /* Return 1 day if no record */
+    if (!stmt.executeStep()) { return 1; }
+    var visitDate = stmt.getUTF8String(0).valueOf();
+    Components.utils.reportError((new Date().setHours(24, 0, 0, 0) - visitDate) / 86400 / 1000);
+    return Math.ceil((new Date().setHours(24, 0, 0, 0) - visitDate / 1000) / 86400 / 1000);
+  }
 };
