@@ -34,7 +34,21 @@ historyReader.prototype = {
     if (aKeyword) {
       // XXX: not implemented
     }
-    var stmt = this._dbConn.createStatement(
+    var stmt = null;
+    /* Since Bug 552023 removes temp tables, use schema version to detect whether the temp tables exists */
+    if (this._dbConn.schemaVersion >= 11) {
+      stmt = this._dbConn.createStatement(
+      //Components.utils.reportError(
+               "SELECT h.id, h.url, h.title, h.rev_host, h.visit_count, h.hidden, h.last_visit_date, v.id, v.place_id, v.from_visit, v.visit_date, v.visit_type, v.session, f.url, a.content FROM moz_places h " +
+               "JOIN moz_historyvisits v ON v.place_id = h.id " +
+               "LEFT JOIN moz_favicons f ON h.favicon_id = f.id "+
+               "LEFT JOIN moz_annos a ON a.place_id = h.id "+
+               "AND a.anno_attribute_id IN (SELECT id FROM moz_anno_attributes WHERE name = 'voyage/thumb_image_url') "+
+               "WHERE 1 " + query_options + " " +
+               additional
+               );
+    } else {
+      stmt = this._dbConn.createStatement(
     //Components.utils.reportError(
                /* Set 1 moz_places_temp <-> moz_historyvisits_temp */
                "SELECT h.id, h.url, h.title, h.rev_host, h.visit_count, h.hidden, h.last_visit_date, v.id, v.place_id, v.from_visit, v.visit_date, v.visit_type, v.session, f.url, a.content FROM moz_places_temp h " +
@@ -72,6 +86,7 @@ historyReader.prototype = {
                "WHERE h.id NOT IN (SELECT id FROM moz_places_temp) " + query_options + " " +
                additional
                );
+    }
     stmt.params.begin_time = parseInt(aBeginTime, 10);
     stmt.params.end_time = parseInt(aEndTime, 10);
     if (aKeyword) {
@@ -81,7 +96,8 @@ historyReader.prototype = {
     /* Process the Asynchorous execution (Implements mozIStorageStatementCallback) */
     var callback = {
       _rows: [],
-      _columns: ['v.id', 'h.id', 'v.from_visit', 'v.visit_date', 'v.visit_type', 'v.session', 'h.url', 'h.title', 'h.rev_host', 'h.visit_count', 'h.hidden', /* 'typed', */ /*'favicon_id',*/ 'h.last_visit_date', 'f.url', 'a.content'],
+      _columns: ['v.id', 'h.id', 'v.from_visit', 'v.visit_date', 'v.visit_type', 'v.session', 'h.url', 'h.title', 'h.rev_host', 'h.visit_count', 'h.hidden', 'h.last_visit_date', 'f.url', 'a.content'],
+      _columnIndexes: [7, 0, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 13, 14],
       _callback: {},
       /* Fetch the result */
       handleResult: function(aResultSet) {
@@ -90,7 +106,7 @@ historyReader.prototype = {
              row = aResultSet.getNextRow()) {  
           var rowObj = {};
           for (var i = 0; i < this._columns.length; i++) {
-             rowObj[this._columns[i]] = row.getResultByName(this._columns[i]);
+             rowObj[this._columns[i]] = row.getResultByIndex(this._columnIndexes[i]);
           }
           this._rows.push(rowObj);
         }  
