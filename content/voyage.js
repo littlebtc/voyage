@@ -1149,8 +1149,6 @@ voyage.timeline = {
     this._endTime = endTime;
     this._beginTime = this._endTime - 86400 * 1000 * /*XXX*/1;
     this.displayDate();
-    $('#shownDays > a').click( function(e) { voyage.timeline.showDatePicker(e); 
-    });
     var keyword = '';
     this.drawTimelineBlocks(this._beginTime, this._endTime);
     /* Dirty hack: not include tomorrow */
@@ -1345,12 +1343,12 @@ voyage.timeline = {
                             );
   },
   showDatePicker: function(e) {
-    $(this).datepicker('dialog',
+    $(e.target).closest("a").datepicker('dialog',
                         '',
                         function(dateText, inst){
                           voyage.timeline.readTimeline(parseInt(dateText, 10) + 86400 * 1000 * 1);
                         },
-                        {minDate: -1 * voyage.timeline._expireDays, maxDate: 0, defaultDate: new Date(voyage.timeline._beginTime), dateFormat: '@'}, e); 
+                        {minDate: -1 * voyage.timeline._expireDays, maxDate: 0, defaultDate: new Date(voyage.timeline._beginTime), dateFormat: '@'}, e);
     e.preventDefault();
     e.stopPropagation();
   }

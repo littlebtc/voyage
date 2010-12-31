@@ -8,9 +8,9 @@ body {
   display: none; /* Hidden by default */
 }
 
-/* Fix jQuery UI display bug */
-body > input[type='text'][size='1'] {
-  display: none;
+/* Fix z-index problem for datepicker on jQuery UI */
+.ui-datepicker {
+  z-index: 99 !important;
 }
 
 #tools {
