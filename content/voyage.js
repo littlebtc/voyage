@@ -917,7 +917,7 @@ voyage.twitter = {
       }
     }
     /* XXX: time-based control */
-    this.getTweets(-1);
+    this.getTweets(1);
   },
   errorCallbackForUserData: function() {
     this._running = false;
@@ -948,7 +948,7 @@ voyage.twitter = {
     this.getUserData();
   },
   /* Get Tweets for a specific ID range */
-  getTweets: function(maxID) {
+  getTweets: function(page) {
     /* Ensure the loading screen to be shown */
     $('#loading').show();
     $('#timeline').css('opacity', '0.1');
@@ -963,9 +963,9 @@ voyage.twitter = {
       return;
     }
     /* If cache is available, get since ID from it */
-    var sinceID = -1;
+    var sinceID = null;
     if (this._cachedTweets.length > 0) {
-      sinceID = this._cachedTweets[0].id;
+      sinceID = this._cachedTweets[0].id_str;
     }
 
     this._accessToken = voyage._prefBranch.getCharPref('twitter.accesstoken');
@@ -986,11 +986,11 @@ voyage.twitter = {
     var dataObj = {
       count: 100, /* XXX: Should be configurable */
     }
-    if (sinceID > 0) {
+    if (sinceID) {
       dataObj.since_id = sinceID;
     }
-    if (maxID > 0) {
-      dataObj.max_id = maxID;
+    if (page > 0) {
+      dataObj.page = page;
     }
     OAuth.setTimestampAndNonce(message);
     OAuth.SignatureMethod.sign(message, accessor);
@@ -1005,11 +1005,11 @@ voyage.twitter = {
       },
       /* Still use text to make benifit from JSON.parse() */
       dataType: 'text',
-      success: function(data, stat) { voyage.twitter.successCallbackForGetTweets(data); },
+      success: function(data, stat) { voyage.twitter.successCallbackForGetTweets(data, page); },
       error: function(xhr, text, error) { voyage.twitter.errorCallbackForGetTweets(xhr); }
     } );
   },
-  successCallbackForGetTweets: function(data) { 
+  successCallbackForGetTweets: function(data, page) { 
     this._running = false;
     var dataArray = JSON.parse(data);
     this._newTweets = this._newTweets.concat(dataArray);
@@ -1047,7 +1047,7 @@ voyage.twitter = {
         voyage.timeline.displayTimeline(true);
         return;
       } else {
-        this.getTweets(lastTweet.id - 1);
+        this.getTweets(page + 1);
       }
     } else {
       /* No new tweets available, show results directly */
@@ -1240,7 +1240,7 @@ voyage.timeline = {
                     })
                 .addClass('tweet timelineElement')
                 .text(tweet.text.replace(/\&lt\;/g, '<').replace(/\&gt\;/g, '>'))
-                .attr('href', 'http://twitter.com/'+tweet.user.screen_name+'/status/'+tweet.id)
+                .attr('href', 'http://twitter.com/'+tweet.user.screen_name+'/status/'+tweet.id_str)
                 .attr('target', '_blank'));
       } else {
         /* This is a bubble */
