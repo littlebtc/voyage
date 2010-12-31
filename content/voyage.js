@@ -916,8 +916,13 @@ voyage.twitter = {
         this.clearCache();
       }
     }
+    /* If cache is available, get since ID from it */
+    var sinceID = null;
+    if (this._cachedTweets.length > 0) {
+      sinceID = this._cachedTweets[0].id_str;
+    }
     /* XXX: time-based control */
-    this.getTweets(1);
+    this.getTweets(1, sinceID);
   },
   errorCallbackForUserData: function() {
     this._running = false;
@@ -948,7 +953,7 @@ voyage.twitter = {
     this.getUserData();
   },
   /* Get Tweets for a specific ID range */
-  getTweets: function(page) {
+  getTweets: function(page, sinceID) {
     /* Ensure the loading screen to be shown */
     $('#loading').show();
     $('#timeline').css('opacity', '0.1');
@@ -961,11 +966,6 @@ voyage.twitter = {
     /* If he has no tweet, there is no need to get them */
     if (!this._userData.status) {
       return;
-    }
-    /* If cache is available, get since ID from it */
-    var sinceID = null;
-    if (this._cachedTweets.length > 0) {
-      sinceID = this._cachedTweets[0].id_str;
     }
 
     this._accessToken = voyage._prefBranch.getCharPref('twitter.accesstoken');
@@ -1005,11 +1005,11 @@ voyage.twitter = {
       },
       /* Still use text to make benifit from JSON.parse() */
       dataType: 'text',
-      success: function(data, stat) { voyage.twitter.successCallbackForGetTweets(data, page); },
+      success: function(data, stat) { voyage.twitter.successCallbackForGetTweets(data, page, sinceID); },
       error: function(xhr, text, error) { voyage.twitter.errorCallbackForGetTweets(xhr); }
     } );
   },
-  successCallbackForGetTweets: function(data, page) { 
+  successCallbackForGetTweets: function(data, page, sinceID) { 
     this._running = false;
     var dataArray = JSON.parse(data);
     this._newTweets = this._newTweets.concat(dataArray);
@@ -1042,12 +1042,14 @@ voyage.twitter = {
           );
           return;
         }
+        /* Clear new tweet cache */
+        this._newTweets = [];
         /* Show results */
         this._ready = true;
         voyage.timeline.displayTimeline(true);
         return;
       } else {
-        this.getTweets(page + 1);
+        this.getTweets(page + 1, sinceID);
       }
     } else {
       /* No new tweets available, show results directly */
